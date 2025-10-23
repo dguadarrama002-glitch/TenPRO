@@ -1,0 +1,129 @@
+:root {
+  /* ============================================================== */
+  /* PALETA HSL de TenPRO */
+  /* ============================================================== */
+  --color-principal-limon: hsl(83, 100%, 51%);    /* #AEFF05 - Verde Limón */
+  --color-fondo-palido: hsl(83, 100%, 88%);       /* #E0FFC3 - Menta Pálido */
+  --color-acento-turquesa: hsl(169, 75%, 52%);    /* #25E4BC - Turquesa Brillante */
+  --color-secundario-oscuro: hsl(169, 36%, 39%);  /* #3F8978 - Verde Azulado Oscuro */
+  --color-texto-oscuro: hsl(9, 10%, 29%);         /* #514442 - Marrón Grisáceo */
+
+  /* 🔥 SOBRESCRITURA TOTAL DE VARIABLES DE BOOTSTRAP */
+  --bs-primary: var(--color-acento-turquesa);
+  --bs-secondary: var(--color-secundario-oscuro);
+  --bs-success: var(--color-principal-limon);
+  --bs-info: var(--color-acento-turquesa);
+  --bs-warning: var(--color-principal-limon);
+  --bs-danger: var(--color-texto-oscuro);
+  --bs-dark: var(--color-texto-oscuro);
+  --bs-light: var(--color-fondo-palido);
+  
+  /* Colores de fondo y texto base de la página */
+  --bs-body-bg: var(--color-fondo-palido);
+  --bs-body-color: var(--color-texto-oscuro);
+}
+
+* { 
+  box-sizing: border-box; 
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+
+body {
+  margin: 16px; 
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background-color: var(--bs-body-bg); 
+  color: var(--bs-body-color);
+}
+
+/* ============================================================== */
+/* Sustitución de estilos manuales (donde no aplica Bootstrap) */
+/* ============================================================== */
+
+/* h1 (antes 'blue') */
+h1 {
+  color: var(--bs-primary);
+  border-bottom: 4px solid currentColor; 
+}
+
+/* h2 (antes rgb(40, 85, 197)) */
+h2 { 
+  color: var(--bs-secondary);
+}
+
+/* p, li, th, td (colores corregidos) */
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: var(--bs-body-color); 
+}
+li { 
+  color: var(--color-texto-oscuro);
+}
+th { 
+  color: var(--color-principal-limon);
+}
+td { 
+  color: var(--bs-body-color);
+}
+
+/* a (links) */
+a {
+  color: var(--bs-primary);
+  border-bottom: 2px solid currentColor;
+  text-decoration: none;
+}
+a:hover { 
+  color: var(--color-secundario-oscuro); 
+}
+
+/* Fila de totales de la tabla */
+.fila-total-tabla {
+    font-weight: bold;
+    background-color: var(--color-secundario-oscuro) !important;
+    color: var(--color-fondo-palido);
+}
+
+/* Botón flotante WhatsApp (Funciona porque tiene estilos muy específicos) */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--color-acento-turquesa);
+  color: #fff; 
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.25); 
+  z-index: 1055;
+  text-decoration: none;
+  transition: transform .2s ease, background-color .2s ease, opacity .2s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  pointer-events: none;
+}
+.whatsapp-float.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.whatsapp-float:hover,
+.whatsapp-float:focus {
+  background-color: var(--color-secundario-oscuro);
+  transform: scale(1.08);
+  outline: none;
+}
+
+/* Media Queries */
+@media (max-width: 575.98px) {
+  footer { padding-bottom: 84px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-float { transition: none; }
+  * { transition: none !important; }
+}
